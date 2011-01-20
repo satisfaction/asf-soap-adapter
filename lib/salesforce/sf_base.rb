@@ -58,10 +58,6 @@ module Salesforce
       #result this.connection.binding.logout(Hash.new)
     end
 
-    establish_connection "salesforce-default-realm"
-  
-    set_table_name 'salesforce_sf_bases'
-
     # Swaps the connection to Salesforce
     def self.swap_connection (connection)
       @@connection = connection
