@@ -27,8 +27,8 @@ module ActiveSalesforce
           class << self
             def set_table_name(value = nil, &block)
               super(value, &block)
-               
-              connection.set_class_for_entity(self, value)
+              
+              connection.set_class_for_entity(self, table_name.singularize)
             end        
           end
         end
