@@ -478,7 +478,7 @@ module ActiveRecord
         columns = entity_def.column_name_to_column
 
         match = sql.match(/SET\s+(.+)\s+WHERE/mi)[1]
-        names = match.scan(/(\w+)\s*=\s*(?:'|NULL|TRUE|FALSE)/mi).flatten
+        names = match.scan(/(\w+)\s*=\s*(?:'(?:(?:[^']|'')*)'|NULL|TRUE|FALSE)/mi).flatten
 
         values = match.scan(/=\s*(NULL|TRUE|FALSE|'(?:(?:[^']|'')*)'),*/mi).flatten
         values.map! { |v| v.first == "'" ? v.slice(1, v.length - 2) : v == "NULL" ? nil : v }
