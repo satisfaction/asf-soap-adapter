@@ -262,7 +262,7 @@ module ActiveRecord
         unless errors.empty?
           message = errors.join("\n")
           fault = (errors.map { |error| error[:message] }).join("\n")
-          raise ActiveSalesforce::ASFError.new(@logger, message, fault)
+          raise ActiveSalesforce::ASFError.new(@logger, message, fault, errors)
         end
 
         result

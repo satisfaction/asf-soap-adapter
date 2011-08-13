@@ -22,11 +22,13 @@ module ActiveSalesforce
   # This is the main error class used by ActiveSalesforce Adapter.
   class ASFError < RuntimeError
     attr :fault
+    attr :errors
     
-    def initialize(logger, message, fault = nil)
+    def initialize(logger, message, fault = nil, raw_errors = [])
       super message
       
       @fault = fault
+      @errors = raw_errors
       
       logger.debug("\nASFError:\n   message='#{message}'\n   fault='#{fault}'\n\n")
     end
